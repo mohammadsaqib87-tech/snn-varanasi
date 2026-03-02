@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="hi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Varanasi News | Shaquib's Digital Network</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;700&family=Playfair+Display:wght@700;900&family=Mukta:wght@400;700&display=swap');
+        
+        :root { --accent: #e11d48; --bg: #020617; }
+        body { font-family: 'Inter', sans-serif; background-color: var(--bg); color: #f8fafc; }
+        h1, h2, .hindi-font { font-family: 'Mukta', sans-serif; }
+        .journal-font { font-family: 'Playfair Display', serif; }
+
+        .glass-card { 
+            background: rgba(30, 41, 59, 0.4);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(255, 255, 255, 0.03);
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+        .glass-card:hover { 
+            border-color: var(--accent);
+            transform: translateY(-8px);
+            box-shadow: 0 25px 50px -12px rgba(225, 29, 72, 0.3);
+        }
+        
+        .premium-ticker {
+            background: linear-gradient(90deg, #be123c 0%, #e11d48 50%, #be123c 100%);
+        }
+
+        .img-zoom-wrap { overflow: hidden; position: relative; }
+        .img-zoom-wrap img { transition: transform 1.2s ease; }
+        .glass-card:hover .img-zoom-wrap img { transform: scale(1.08); }
+        
+        /* BBC Style Spacing for Logo */
+        .logo-space { letter-spacing: 0.05em; }
+    </style>
+</head>
+<body class="selection:bg-rose-500 selection:text-white">
+
+    <div class="bg-black text-[9px] py-2 border-b border-white/5 tracking-[0.2em] font-medium uppercase">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center opacity-60">
+            <span>Monday, March 02, 2026</span>
+            <span class="text-rose-500 font-bold tracking-widest">OWNER: SHAQUIB <i class="fas fa-crown ml-1"></i></span>
+        </div>
+    </div>
+
+    <nav class="sticky top-0 z-[100] bg-slate-950/90 backdrop-blur-2xl border-b border-white/5 py-6">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <button class="text-white hover:text-rose-500 transition-colors"><i class="fas fa-bars-staggered text-xl"></i></button>
+            
+            <div class="text-center group cursor-pointer">
+                <h1 class="journal-font text-4xl font-black italic tracking-normal uppercase leading-none group-hover:text-rose-500 transition-colors">
+                    VARANASI&nbsp;&nbsp;<span class="text-rose-600">NEWS</span>
+                </h1>
+                <p class="text-[9px] tracking-[0.6em] uppercase opacity-40 mt-2 font-bold italic">BY SHAQUIB NEWS NETWORK</p>
+            </div>
+
+            <div class="flex items-center space-x-6">
+                <button class="text-white hover:text-rose-500"><i class="fas fa-search text-xl"></i></button>
+            </div>
+        </div>
+    </nav>
+
+    <div class="premium-ticker py-2.5 overflow-hidden border-y border-white/5 shadow-lg">
+        <div class="flex items-center">
+            <span class="bg-white text-rose-700 px-4 py-0.5 text-[10px] font-black uppercase ml-6 shadow-sm">LATEST</span>
+            <marquee class="text-xs font-extrabold tracking-widest text-white ml-6 uppercase" scrollamount="10">
+                वाराणसी न्यूज़: काशी की ताज़ा खबरें सबसे तेज़ | VARANASI NEWS: POWERED BY SHAQUIB NEWS NETWORK | सटीक खबर, वाराणसी का गौरव |
+            </marquee>
+        </div>
+    </div>
+
+    <main class="max-w-7xl mx-auto px-6 py-16">
+        <div id="loader" class="flex flex-col items-center justify-center py-40">
+            <div class="w-10 h-10 border-2 border-rose-600/30 border-t-rose-600 rounded-full animate-spin"></div>
+            <p class="mt-8 text-[10px] tracking-[0.5em] uppercase opacity-30 font-bold">Connecting to Live Feed...</p>
+        </div>
+
+        <div id="news-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-12">
+            </div>
+    </main>
+
+    <footer class="bg-slate-950 border-t border-white/5 pt-24 pb-16 px-6 text-center">
+        <div class="max-w-7xl mx-auto">
+            <div class="journal-font text-4xl mb-6 italic tracking-widest">Varanasi&nbsp;&nbsp;<span class="text-rose-600">News</span></div>
+            <p class="text-xs text-slate-500 tracking-[0.3em] uppercase font-bold mb-12">SHAQUIB NEWS NETWORK INITIATIVE</p>
+            
+            <div class="flex justify-center space-x-12 text-2xl text-slate-500 mb-16">
+                <i class="fab fa-whatsapp hover:text-green-500 transition-all cursor-pointer"></i>
+                <i class="fab fa-instagram hover:text-rose-400 transition-all cursor-pointer"></i>
+                <i class="fab fa-youtube hover:text-rose-600 transition-all cursor-pointer"></i>
+            </div>
+            
+            <div class="pt-12 border-t border-white/5">
+                <p class="text-[9px] text-slate-700 tracking-[0.4em] uppercase font-bold">© 2026 VARANASI NEWS | POWERED BY SHAQUIB</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // TERA GLOBAL BACKEND URL
+        const API_URL = "https://script.google.com/macros/s/AKfycbygKcsHromWbkBQUZftMtktDvJogsRxkDhpD_Ti-wyRcucpzh8eytknSmnVl7GA0tNnhg/exec";
+
+        async function loadNews() {
+            try {
+                const response = await fetch(API_URL);
+                const data = await response.json();
+                
+                const grid = document.getElementById('news-grid');
+                const loader = document.getElementById('loader');
+
+                if (!data || data.length === 0) {
+                    loader.innerHTML = '<p class="text-slate-600 text-xs tracking-widest uppercase font-bold">No reports from Kashi today.</p>';
+                    return;
+                }
+
+                loader.style.display = 'none';
+
+                grid.innerHTML = data.map(news => `
+                    <article class="glass-card flex flex-col group cursor-pointer">
+                        <div class="img-zoom-wrap h-60">
+                            <img src="${news.image}" alt="Kashi Report" class="w-full h-full object-cover grayscale-[0.2] group-hover:grayscale-0">
+                            <div class="absolute inset-0 bg-slate-950/30 group-hover:bg-transparent transition-colors"></div>
+                        </div>
+                        <div class="p-10 flex-grow flex flex-col">
+                            <div class="flex items-center space-x-3 mb-6">
+                                <span class="h-[1px] w-8 bg-rose-600"></span>
+                                <span class="text-[9px] font-black uppercase tracking-[0.3em] text-rose-500">Kashi Report</span>
+                            </div>
+                            <h3 class="hindi-font text-2xl font-bold leading-snug text-slate-100 mb-10 flex-grow">
+                                ${news.title}
+                            </h3>
+                            <div class="flex items-center justify-between pt-8 border-t border-white/5">
+                                <span class="text-[10px] text-slate-500 font-bold tracking-tighter uppercase">
+                                    <i class="far fa-clock mr-2 text-rose-600"></i> ${news.date}
+                                </span>
+                                <i class="fas fa-arrow-right-long text-rose-600 text-sm group-hover:translate-x-2 transition-transform"></i>
+                            </div>
+                        </div>
+                    </article>
+                `).join('');
+            } catch (error) {
+                console.error("News Load Error:", error);
+                document.getElementById('loader').innerHTML = '<p class="text-rose-600 text-[10px] font-black tracking-widest uppercase">Broadcast Interrupted</p>';
+            }
+        }
+
+        loadNews();
+    </script>
+</body>
+</html>
